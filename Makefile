@@ -5,8 +5,10 @@ cluster: kind-config.yaml
 prometheus: stable
 	helm install prometheus stable/prometheus
 
-stable: cluster
+stable: 
 	helm repo add stable https://charts.helm.sh/stable
+
+
 
 clean:
 	kind delete cluster
