@@ -6,8 +6,14 @@ brew install kind
 brew install helm
 ```
 
-## Build a cluster with prometheus ##
+## Build the cluster layer##
 
 ```
-make prometheus
+make cluster
+```
+
+## Build the metrics layer
+
+```
+make metrics
 ```
