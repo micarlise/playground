@@ -2,13 +2,26 @@
 cluster: kind-config.yaml
 	kind create cluster --config kind-config.yaml
 
-prometheus: stable
+# metrics layer
+metrics: prometheus grafana
+
+prometheus: helm-stable
 	helm install prometheus stable/prometheus
 
-stable: cluster
+grafana: helm-grafana
+	helm install \
+		--set adminPassword="password" \
+		grafana grafana/grafana
+
+helm-stable: 
 	helm repo add stable https://charts.helm.sh/stable
 
+helm-grafana:
+	helm repo add grafana https://grafana.github.io/helm-charts
+
+# 
 clean:
 	kind delete cluster
 
-.PHONY: cluster prometheus stable clean
+.PHONY: cluster prometheus helm-stable clean grafana helm-grafana
+.PHONY: metrics
