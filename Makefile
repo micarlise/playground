@@ -10,7 +10,7 @@ prometheus: helm-stable
 
 grafana: helm-grafana
 	helm install \
-		--set adminPassword="password" \
+		-f grafana-values.yml \
 		grafana grafana/grafana
 
 helm-stable: 
