@@ -1,6 +1,6 @@
 
 cluster: kind-config.yaml
-	kind create cluster --config kind-config.yaml
+	kind create cluster --config conf/kind-config.yaml
 
 # metrics layer
 metrics: prometheus grafana
@@ -10,7 +10,7 @@ prometheus: helm-stable
 
 grafana: helm-grafana
 	helm install \
-		-f grafana-values.yml \
+		-f conf/grafana-values.yml \
 		grafana grafana/grafana
 
 helm-stable: 
