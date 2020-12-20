@@ -1,5 +1,5 @@
 
-cluster: kind-config.yaml
+cluster: conf/kind-config.yaml
 	kind create cluster --config conf/kind-config.yaml
 
 # metrics layer
@@ -11,6 +11,7 @@ prometheus: helm-stable
 grafana: helm-grafana
 	helm install \
 		-f conf/grafana-values.yml \
+		--set sidecar.dashboards.enabled=true \
 		grafana grafana/grafana
 
 helm-stable: 
