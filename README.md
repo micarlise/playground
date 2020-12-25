@@ -17,3 +17,11 @@ make cluster
 ```
 make metrics
 ```
+
+## Add databases ##
+
+**mongodb**
+
+```
+make mongodb
+```
