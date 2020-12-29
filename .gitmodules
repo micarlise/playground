@@ -1,0 +1,3 @@
+[submodule "hack/docker-tuntap-osx"]
+	path = hack/docker-tuntap-osx
+	url = https://github.com/AlmirKadric-Published/docker-tuntap-osx.git
