@@ -33,11 +33,15 @@ helm-stable:
 helm-grafana:
 	helm repo add grafana https://grafana.github.io/helm-charts
 
+helm-bitnami:
+	helm repo add bitnami https://charts.bitnami.com/bitnami
+
 # databases
 .PHONY: mongodb
-mongodb: 
+mongodb: helm-bitnami
 	helm install \
-		mongodb databases/mongodb
+		mongodb bitnami/mongodb \
+		-f conf/mongodb-values.yml
 
 .PHONY: clean
 clean:
