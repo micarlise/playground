@@ -25,6 +25,13 @@ You'll get a 5 node cluster that runs inside Docker.  Loadbalancers will work
 inside this cluster.  Modifications can be made by editing
 `conf/kind-config.yaml`.  Consult [KinD docs](https://kind.sigs.k8s.io) for ideas.
 
+
+#### Clean up cluster
+
+```
+make clean
+```
+
 #### Adding metrics and dashboards 
 
 You can install prometheus and grafana using the `metrics` target.
@@ -66,10 +73,20 @@ data:
 {{- end }}
 ```
 
-## Add databases 
+## Backend services for your helm chart
 
-**mongodb**
+[bitnami chart repo](https://github.com/bitnami/charts) is a great pair for
+local KinD clusters.  You can easily add on backend services.  The following
+example installs a mongodb that can be used by your helm chart.
+
+**Enable bitnami repos**
 
 ```
-make mongodb
+make helm-bitnami
+```
+
+**install mongodb**
+
+```
+helm install mongodb --set architecture="standalone" --set auth.enabled=false --set persistence.enabled=false bitnami/mongodb
 ```
