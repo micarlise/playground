@@ -4,7 +4,6 @@ cluster: kind metallb
 
 kind: conf/kind-config.yaml
 	kind create cluster --config conf/kind-config.yaml
-	sudo route -v add -net 172.18.0.1 -netmask 255.255.0.0 10.0.75.2
 
 metallb: kind
 	kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.3/manifests/namespace.yaml
